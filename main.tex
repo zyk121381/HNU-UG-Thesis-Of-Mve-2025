@@ -1,0 +1,61 @@
+% Preamble
+\documentclass{hnu}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{overpic}
+\usepackage{ulem}
+\usepackage{fontspec}
+\usepackage{multirow} %表格内跨行
+\usepackage{threeparttable}% 三线表
+\usepackage{enumitem}
+%\setlist[enumerate]{itemsep=0.5\baselineskip}
+
+\newcommand\obs[1]{\textcolor{blue}{#1}} %文本高亮
+\newcommand\rev[1]{\textcolor{red}{#1}} %文本高亮
+\newcommand\ve[1]{\boldsymbol{#1}} %矢量
+\newcommand\bm[1]{\boldsymbol{#1}} % 加粗符号
+\newcommand\ma[1]{\mathbf{#1}} % 矩阵，张量等
+\newcommand\Dt[2][t]{\frac{\mathrm{D}{#2}}{\mathrm{D}#1}} %物质倒数
+\newcommand\dt[2][t]{\frac{\mathrm{d}{#2}}{\mathrm{d}#1}} %微分导数
+\newcommand\ppx[2][x]{\frac{\partial {#2}}{\partial {#1}}} %偏导
+
+% Document
+\begin{document}
+    \createCover % 封面
+
+    \frontmatter
+    \createCopyright % 版权
+
+    % ========================================摘要部分
+    \input{docs/abstract}
+    % ========================================摘要部分
+
+    \createTOC % 目录
+    \createLOF % 插图索引
+    \createLOT % 附表索引
+
+    \mainmatter
+    % ========================================正文部分
+    \input{docs/chapters/chap1}
+    \input{docs/chapters/chap2}
+    \input{docs/chapters/chap3}
+    % ========================================正文部分
+
+    % 参考文献
+    \createBibliography
+    \bibliography{refs}  % 参考文献使用 BibTeX 编译
+
+    % ========================================致谢部分
+    \input{docs/thanks}
+    % ========================================致谢部分
+
+    % 附录
+    \createAppendix
+    % ========================================附录部分
+    \input{docs/appendices/appendix1}
+    \input{docs/appendices/appendix2}
+    \input{docs/appendices/appendix3}
+    % ========================================附录部分
+\end{document}

@@ -1,0 +1,136 @@
+\RequirePackage{pkgs/font}
+\RequirePackage{tabularx}
+\RequirePackage{booktabs}
+\RequirePackage{xeCJKfntef}
+
+\input{docs/cover}
+\usepackage[normalem]{ulem}
+
+\newcommand\contentLength{8.25cm}
+\newcommand\contentVerticalSpace{1.3em}
+
+\newcommand{\createCover}{
+    \begin{titlepage}    
+    \begin{figure}
+    \vspace{1cm}
+    \centering
+    \includegraphics[width=9.49cm]{pkgs/imgs/hnu_logo_bkg}
+    \end{figure}
+
+    \begin{figure}
+    \centering
+    \vspace{-11.49cm}
+    \includegraphics[width=8.01cm, height=2.58cm]{pkgs/imgs/hnu_logo}
+    \end{figure}
+    
+    \vspace*{0cm} 
+    \centering
+    \makebox[0pt][c]{
+        \raisebox{-0.2cm}[0pt][0pt]{
+            \sizeOne {
+                \fontTimesNewRomanBold HUNAN UNIVERSITY
+            }
+        }
+    }
+
+    \makebox[0pt][c]{
+        \raisebox{-2.5cm}[0pt][0pt]{
+            \fontsize{45pt}{0}\selectfont {
+                \fontSimsun 本科生毕业论文\fontTimesNewRoman \hspace{0pt}(\fontSimsun 设计\fontTimesNewRoman )\hspace{0pt}
+            }
+        }
+    }
+    
+    \newlength{\thesistitlewidth}
+    \settowidth{\thesistitlewidth}{\thesisTitle}
+    \vspace{6.5cm}
+    
+    \xeCJKsetup{underline={skip=false}}
+
+    \begin{tabular}{r @{} p{\contentLength} @{}}
+    % 1. 论文题目
+    {\sizeTwol {
+        \fontSimheiBold 论文\fontSimheiBoldChar\hspace{0pt}(\fontSimheiBold 设计\fontSimheiBoldChar)\hspace{0pt}\fontSimheiBold 题目：
+    }} & {
+        \fontsize{15pt}{23pt}\selectfont\fontSimsun
+        \centering
+        \CJKunderline[thickness=0.5pt, depth=5pt]{
+            \hfill\thesisTitle\hfill
+        }\par
+    } \\
+    
+    \specialrule{0em}{\contentVerticalSpace}{0pt}
+    
+    % 2. 学生姓名
+    {\sizeFour {
+        \fontSimhei 学生姓名：
+    }} & {
+        \fontsize{15pt}{15pt}\selectfont\fontSimsun\fontTimesNewRoman
+        \centering
+        \CJKunderline[thickness=0.5pt, depth=5pt]{
+            \hfill\studentName\hfill
+        }\par
+    }  \\
+    
+    \specialrule{0em}{\contentVerticalSpace}{0pt}
+    
+    % 3. 学生学号
+    {\sizeFour {
+        \fontSimhei 学生学号：
+    }} & {
+        \fontsize{15pt}{15pt}\selectfont\fontSimsun\fontTimesNewRoman
+        \centering
+        \CJKunderline[thickness=0.5pt, depth=5pt]{
+            \hfill\studentID\hfill
+        }\par
+    }  \\
+    
+    \specialrule{0em}{\contentVerticalSpace}{0pt}
+    
+    % 4. 专业班级
+    {\sizeFour {
+        \fontSimhei 专业班级：
+    }} & {
+        \fontsize{15pt}{15pt}\selectfont\fontSimsun\fontTimesNewRoman
+        \centering
+        \CJKunderline[thickness=0.5pt, depth=5pt]{
+            \hfill\studentCls\hfill
+        }\par
+    }  \\
+    
+    \specialrule{0em}{\contentVerticalSpace}{0pt}
+    
+    % 5. 学院名称
+    {\sizeFour {
+        \fontSimhei 学院名称：
+    }} & {
+        \fontsize{15pt}{15pt}\selectfont\fontSimsun\fontTimesNewRoman
+        \centering
+        \CJKunderline[thickness=0.5pt, depth=5pt]{
+            \hfill\studentAcademy\hfill
+        }\par
+    }  \\
+    
+    \specialrule{0em}{\contentVerticalSpace}{0pt}
+    
+    % 6. 指导老师
+    {\sizeFour {
+        \fontSimhei 指导老师：
+    }} & {
+        \fontsize{15pt}{15pt}\selectfont\fontSimsun\fontTimesNewRoman
+        \centering
+        \CJKunderline[thickness=0.5pt, depth=5pt]{
+            \hfill\studentInstructor\hfill
+        }\par
+    }  \\
+    \end{tabular}
+
+    \vspace{3cm}
+    \sizeFour{
+        \fontSimhei \fontTimesNewRoman {
+            \thesisDate
+        }
+    }
+
+    \end{titlepage}
+}

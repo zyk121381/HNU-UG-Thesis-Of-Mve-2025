@@ -1,0 +1,9 @@
+\newcommand{\createAppendix}{
+    \titleformat{\chapter}{\fontTimesNewRomanBold\fontSimhei\sizeThree}{附录\thechapter}{1em}{}
+    \cleardoublepage
+    \appendix
+
+    \renewcommand{\theequation}{\thechapter\arabic{equation}} % 式(B3)
+    \renewcommand{\thefigure}{\thechapter\arabic{figure}}     % 图A1
+    \renewcommand{\thetable}{\thechapter\arabic{table}}       % 表B2
+}

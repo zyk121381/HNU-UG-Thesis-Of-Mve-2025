@@ -1,0 +1,10 @@
+.idea
+out
+*.aux
+*.log
+*.bbl
+*.lof
+*.lot
+*.out
+*.synctex.gz
+*.toc
