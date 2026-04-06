@@ -24,8 +24,19 @@
 \linespread{1.625}
 
 % 默认中文字体：宋体, 英文字体：Times New Roman
-\setmainfont[Path=fonts/]{mTimesNewRoman.ttf}
-\setCJKmainfont[Path=fonts/]{mSimsun.ttc}
+% 为英文完整映射：常规、加粗、斜体、加粗斜体
+\setmainfont[
+    Path=fonts/,
+    BoldFont=mTimesNewRomanBold.ttf,
+    ItalicFont=mTimesNewRomanItalic.ttf,
+    BoldItalicFont=mTimesNewRomanBoldItalic.ttf
+]{mTimesNewRoman.ttf}
+
+% 为中文映射：常规、加粗（使用宋体加粗）
+\setCJKmainfont[
+    Path=fonts/,
+    BoldFont=mSimsunBold.ttf
+]{mSimsun.ttc}
 
 % 页眉预定义格式
 \RequirePackage{fancyhdr}
