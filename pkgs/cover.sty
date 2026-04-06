@@ -1,7 +1,6 @@
 \RequirePackage{pkgs/font}
 \RequirePackage{tabularx}
 \RequirePackage{booktabs}
-\RequirePackage{xeCJKfntef}
 
 \input{docs/cover}
 \usepackage[normalem]{ulem}
@@ -23,7 +22,7 @@
     \includegraphics[width=8.01cm, height=2.58cm]{pkgs/imgs/hnu_logo}
     \end{figure}
     
-    \vspace*{0cm} 
+    \vspace*{0cm}
     \centering
     \makebox[0pt][c]{
         \raisebox{-0.2cm}[0pt][0pt]{
@@ -44,85 +43,61 @@
     \newlength{\thesistitlewidth}
     \settowidth{\thesistitlewidth}{\thesisTitle}
     \vspace{6.5cm}
-    
-    \xeCJKsetup{underline={skip=false}}
-
-    \begin{tabular}{r @{} p{\contentLength} @{}}
-    % 1. 论文题目
+    \begin{tabular}{r l}
     {\sizeTwol {
         \fontSimheiBold 论文\fontSimheiBoldChar\hspace{0pt}(\fontSimheiBold 设计\fontSimheiBoldChar)\hspace{0pt}\fontSimheiBold 题目：
-    }} & {
-        \fontsize{15pt}{23pt}\selectfont\fontSimsun
-        \centering
-        \CJKunderline[thickness=0.5pt, depth=5pt]{
-            \hfill\thesisTitle\hfill
-        }\par
-    } \\
-    
+    }} &  {\sizeThreel{
+    \ifdim\thesistitlewidth>\contentLength
+    \underline{\uline{\fontSimsun\fontTimesNewRoman\parbox[t]{\contentLength}{%
+    	\centering
+    	\renewcommand{\ULdepth}{1pt}    	
+    	{\thesisTitle}}\hfill}}%
+    \else
+    \underline{\makebox[\contentLength][c]{%
+    		\parbox[t]{\contentLength}{\centering \thesisTitle}
+	    }}
+	\fi
+	}} \\
     \specialrule{0em}{\contentVerticalSpace}{0pt}
-    
-    % 2. 学生姓名
     {\sizeFour {
         \fontSimhei 学生姓名：
-    }} & {
-        \fontsize{15pt}{15pt}\selectfont\fontSimsun\fontTimesNewRoman
-        \centering
-        \CJKunderline[thickness=0.5pt, depth=5pt]{
-            \hfill\studentName\hfill
-        }\par
-    }  \\
-    
+    }} & {\sizeThreel {
+        \fontSimsun\fontTimesNewRoman\underline{\makebox[\contentLength][c]{
+            \studentName
+        }}
+    }}  \\
     \specialrule{0em}{\contentVerticalSpace}{0pt}
-    
-    % 3. 学生学号
     {\sizeFour {
         \fontSimhei 学生学号：
-    }} & {
-        \fontsize{15pt}{15pt}\selectfont\fontSimsun\fontTimesNewRoman
-        \centering
-        \CJKunderline[thickness=0.5pt, depth=5pt]{
-            \hfill\studentID\hfill
-        }\par
-    }  \\
-    
+    }} & {\sizeThreel {
+        \fontSimsun\fontTimesNewRoman\underline{\makebox[\contentLength][c]{
+            \studentID
+        }}
+    }}  \\
     \specialrule{0em}{\contentVerticalSpace}{0pt}
-    
-    % 4. 专业班级
     {\sizeFour {
         \fontSimhei 专业班级：
-    }} & {
-        \fontsize{15pt}{15pt}\selectfont\fontSimsun\fontTimesNewRoman
-        \centering
-        \CJKunderline[thickness=0.5pt, depth=5pt]{
-            \hfill\studentCls\hfill
-        }\par
-    }  \\
-    
+    }} & {\sizeThreel {
+        \fontSimsun\fontTimesNewRoman\underline{\makebox[\contentLength][c]{
+            \studentCls
+        }}
+    }}  \\
     \specialrule{0em}{\contentVerticalSpace}{0pt}
-    
-    % 5. 学院名称
     {\sizeFour {
         \fontSimhei 学院名称：
-    }} & {
-        \fontsize{15pt}{15pt}\selectfont\fontSimsun\fontTimesNewRoman
-        \centering
-        \CJKunderline[thickness=0.5pt, depth=5pt]{
-            \hfill\studentAcademy\hfill
-        }\par
-    }  \\
-    
+    }} & {\sizeThreel {
+        \fontSimsun\fontTimesNewRoman\underline{\makebox[\contentLength][c]{
+            \studentAcademy
+        }}
+    }}  \\
     \specialrule{0em}{\contentVerticalSpace}{0pt}
-    
-    % 6. 指导老师
     {\sizeFour {
         \fontSimhei 指导老师：
-    }} & {
-        \fontsize{15pt}{15pt}\selectfont\fontSimsun\fontTimesNewRoman
-        \centering
-        \CJKunderline[thickness=0.5pt, depth=5pt]{
-            \hfill\studentInstructor\hfill
-        }\par
-    }  \\
+    }} & {\sizeThreel {
+        \fontSimsun\fontTimesNewRoman\underline{\makebox[\contentLength][c]{
+            \studentInstructor
+        }}
+    }}  \\
     \end{tabular}
 
     \vspace{3cm}
