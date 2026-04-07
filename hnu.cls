@@ -207,6 +207,8 @@
 
 % 参考文献以上标形式置于所引用内容最末句的右上角
 \renewcommand{\@cite}[1]{\textsuperscript{\,[#1]}}
+% 与正文排齐的直接说明引用
+\newcommand{\inlinecite}[1]{[\citenum{#1}]}
 
 % 代码块预定义格式
 \RequirePackage{listings}
