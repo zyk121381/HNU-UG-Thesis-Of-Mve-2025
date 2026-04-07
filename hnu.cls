@@ -6,8 +6,9 @@
         name={,},
         number={\arabic{chapter}}
     }}
-
+    
 \RequirePackage{amsmath}
+\RequirePackage{mathspec}
 \numberwithin{equation}{chapter}
 
 % 上边距：30mm；下边距：25mm；左边距：30mm；右边距：20mm
@@ -31,6 +32,13 @@
     ItalicFont=mTimesNewRomanItalic.ttf,
     BoldItalicFont=mTimesNewRomanBoldItalic.ttf
 ]{mTimesNewRoman.ttf}
+
+% \setmathsfont(Digits,Latin,Greek)[
+%     Path=fonts/,
+%     BoldFont=mTimesNewRomanBold.ttf,
+%     ItalicFont=mTimesNewRomanItalic.ttf,
+%     BoldItalicFont=mTimesNewRomanBoldItalic.ttf
+% ]{mTimesNewRoman.ttf}
 
 % 为中文映射：常规、加粗（使用宋体加粗）
 \setCJKmainfont[
@@ -208,7 +216,17 @@
 % 参考文献以上标形式置于所引用内容最末句的右上角
 \renewcommand{\@cite}[1]{\textsuperscript{\,[#1]}}
 % 与正文排齐的直接说明引用
-\newcommand{\inlinecite}[1]{[\citenum{#1}]}
+\makeatletter
+\renewcommand{\@cite}[2]{\textsuperscript{\,[#1]}}
+\DeclareRobustCommand{\inlinecite}[1]{
+  \begingroup
+    \def\textsuperscript##1{\ignorespaces##1\unskip}
+    \def\,{}
+    \let\NAT@spacechar\@empty 
+    \cite{#1}
+  \endgroup
+}
+\makeatother
 
 % 代码块预定义格式
 \RequirePackage{listings}

@@ -1,4 +1,5 @@
 # 湖南大学机械与运载工程学院本科毕业设计（论文）撰写规范（2025修订版，适用于2026届毕业生）
+![Latex](https://img.shields.io/badge/Latex-XeLaTeX-61DAFB) ![License](https://img.shields.io/badge/license-Apache%202.0-green) ![Version](https://img.shields.io/github/v/release/zyk121381/HNU-UG-Thesis-Of-Mve-2025)
 
 ## 背景说明
 
@@ -39,6 +40,9 @@
 2. 使用本模板进行排版时，建议开启 `draft` 模式先行检查内容；
 3. 遇到格式问题，优先对比学院样张，而非直接参照学校模板；
 4. 如发现本模板与学院最终规范存在出入，欢迎提 Issue 或联系维护者。
+
+## 帮助与说明
+由于该模板服务于湖南大学机械与运载工程学院于2025年末发布的新的本科生毕业论文撰写规范（适用于2026年毕业生），为了实现撰写规范中的一些要求，新定义了一些命令。请参考[Wiki页面](https://github.com/zyk121381/HNU-UG-Thesis-Of-Mve-2025/wiki)获取详细说明。
 
 ## 致谢
 
