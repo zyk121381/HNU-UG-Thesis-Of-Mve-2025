@@ -1,24 +1,29 @@
 \LoadClass[UTF8, openright, a4paper, twoside, zihao=-4]{ctexbook}
+\newlength{\titlebaseLine}
+\setlength{\titlebaseLine}{15pt}
+\raggedbottom
 
-% 目录章节格式（阿拉伯数字）
+% 目录章节格式
 \ctexset{
     chapter={
-        name={,},
-        number={\arabic{chapter}}
-    }}
+        number = {\arabic{chapter}}
+    }
+}
     
 \RequirePackage{amsmath}
 \RequirePackage{mathspec}
+\RequirePackage[section]{placeins}
 \numberwithin{equation}{chapter}
+\RequirePackage{float}
 
 % 上边距：30mm；下边距：25mm；左边距：30mm；右边距：20mm
 \RequirePackage{geometry}
-\RequirePackage{emptypage} % 新增：确保由于右页起产生的空白背页完全空白（无页眉页码）
+\RequirePackage{emptypage} % 确保由于右页起产生的空白背页完全空白（无页眉页码）
 \geometry{
     top=30mm,
     bottom=25mm,
-    inner=30mm, % 建议：双面打印时，原先的left(30)应当作为装订边(inner)
-    outer=20mm, % 原先的right(20)应当作为外侧边(outer)
+    inner=30mm,
+    outer=20mm,
 }
 
 % 行间距为1.5倍行距(1.5 * 1.2(latex默认) ÷ 1.3(word默认))
@@ -88,7 +93,7 @@
 % 中文摘要预定义格式
 \newenvironment{abstractCN}{
     \clearpage
-    \phantomsection\addcontentsline{toc}{chapter}{摘~~要}
+    % \phantomsection\addcontentsline{toc}{chapter}{摘~~要}
     \begin{center}
         % 论文题目（小3号黑体，数字字母TNR）
         \fontTimesNewRoman\fontSimhei\sizeThreel{
@@ -116,7 +121,7 @@
 % 英文摘要预定义格式
 \newenvironment{abstractENG}{
     \clearpage % 英文摘要另起一页
-    \phantomsection\addcontentsline{toc}{chapter}{A\hspace{0.1em}b\hspace{0.1em}s\hspace{0.1em}t\hspace{0.1em}r\hspace{0.1em}a\hspace{0.1em}c\hspace{0.1em}t}
+    % \phantomsection\addcontentsline{toc}{chapter}{A\hspace{0.1em}b\hspace{0.1em}s\hspace{0.1em}t\hspace{0.1em}r\hspace{0.1em}a\hspace{0.1em}c\hspace{0.1em}t}
     \begin{center}
         % The title（小3号 Times New Roman 加粗）
         \fontTimesNewRomanBold\sizeThreel{
@@ -141,25 +146,34 @@
     \raggedright\fontTimesNewRomanBold\sizeFour Keywords: \fontTimesNewRomanBold\sizeFourl
 }
 
-% 章（如“1”）、节（如“1.1”）、条（如“1.1.1”）、款（如“1.”）、项（如“（1）”）
-% “节”、“条”的段前、段后各设为0.5行
 \RequirePackage{titlesec}
-% Chapter格式
-\titleformat{\chapter}{\fontTimesNewRomanBold\fontSimhei\sizeThree}{\thechapter}{1em}{}
-\titlespacing{\chapter}{0pt}{0pt}{2pt}
-% Section格式
-\titleformat{\section}{\fontTimesNewRoman\fontSimhei\sizeFourl}{\thesection}{1em}{}
-\titlespacing{\section}{0pt}{7.5pt}{7.5pt}
-% Subsection格式
-\titleformat{\subsection}{\fontTimesNewRoman\fontSimhei\sizeFourl}{\thesubsection}{1em}{}
-\titlespacing{\subsection}{0pt}{7.5pt}{7.5pt}
-% Subsubsection格式
-\titleformat{\subsubsection}{\fontTimesNewRoman\fontSimhei\sizeFourl}{\thesubsubsection}{1em}{}
-\titlespacing{\subsubsection}{0pt}{7.5pt}{7.5pt}
+% 1. 章标题 (居中、3号黑体、段前1行、段后1行)
+\titleformat{\chapter}[block]
+    {\centering\fontTimesNewRoman\fontSimhei\sizeThree}
+    {第\thechapter 章}{1em}{}
+\titlespacing{\chapter}{0pt}{-25pt}{\titlebaseLine}
+
+% 2. 节标题 (小4号黑体、段前0.5行、段后0.5行)
+\titleformat{\section}
+    {\fontTimesNewRoman\fontSimhei\sizeFourl}
+    {\thesection}{1em}{}
+\titlespacing{\section}{0pt}{0.5\titlebaseLine}{0.5\titlebaseLine}
+
+% 3. 条标题 (小4号黑体、段前0.5行、段后0.5行)
+\titleformat{\subsection}
+    {\fontTimesNewRoman\fontSimhei\sizeFourl}
+    {\thesubsection}{1em}{}
+\titlespacing{\subsection}{0pt}{0.5\titlebaseLine}{0.5\titlebaseLine}
+
+% 4. 款标题 (小4号黑体、段前0.5行、段后0.5行)
+\titleformat{\subsubsection}
+    {\fontTimesNewRoman\fontSimhei\sizeFourl}
+    {\thesubsubsection}{1em}{}
+\titlespacing{\subsubsection}{0pt}{0.5\titlebaseLine}{0.5\titlebaseLine}
 
 % 致谢预定义格式
 \newenvironment{newThanks}{
-    \cleardoublepage % 修改：强制致谢在奇数页起
+    \cleardoublepage % 强制致谢在奇数页起
     \phantomsection\addcontentsline{toc}{chapter}{致~谢}
     \begin{center}
         \fontSimhei\sizeThree 致~谢
@@ -178,6 +192,9 @@
 
 % 图名：5号宋体加粗 (数字字母自动TNR加粗)
 \DeclareCaptionFont{figureFont}{\fontTimesNewRomanBold\fontSimsunBold\sizeFive}
+\DeclareCaptionFont{subfigureFont}{%
+    \linespread{1.0}\fontTimesNewRomanBold\fontSimsunBold\sizeFive
+}
 % 表名：5号黑体加粗 (数字字母自动TNR加粗)
 \DeclareCaptionFont{tableFont}{\fontTimesNewRomanBold\fontSimheiBold\sizeFive}
 
@@ -189,15 +206,19 @@
     labelsep=space, % 图号在图名之后空一格
     justification=centering, % 居中
     position=bottom, % 图题置于图下
-    aboveskip=6pt,
+    aboveskip=-2pt,
+    belowskip=-18pt,
 }
 
 % 分图的全局设置：用(a)、(b)等置于分图之下，5号宋体
 \captionsetup[subfigure]{
-    font=figureFont,
+    font=subfigureFont,
+    labelfont=subfigureFont,
     labelformat=simple, % 仅显示(a), (b)
     labelsep=space,
     justification=centering,
+    aboveskip=4pt,
+    belowskip=-4pt,
 }
 \renewcommand{\thesubfigure}{(\alph{subfigure})}
 
@@ -209,8 +230,8 @@
     labelsep=space, % 表序与表名之间空一格
     justification=centering, % 置于表上居中
     position=top,
-    aboveskip=6pt,
-    belowskip=6pt,
+    aboveskip=0pt,
+    belowskip=-2pt,
 }
 
 % 参考文献以上标形式置于所引用内容最末句的右上角
@@ -218,14 +239,14 @@
 % 与正文排齐的直接说明引用
 \makeatletter
 \renewcommand{\@cite}[2]{\textsuperscript{\,[#1]}}
-\DeclareRobustCommand{\inlinecite}[1]{
-  \begingroup
-    \def\textsuperscript##1{\ignorespaces##1\unskip}
-    \def\,{}
-    \let\NAT@spacechar\@empty 
-    \cite{#1}
-  \endgroup
-}
+\DeclareRobustCommand{\inlinecite}[1]{%
+  \begingroup%
+    \def\textsuperscript##1{\ignorespaces##1\unskip}%
+    \def\,{}%
+    \let\NAT@spacechar\@empty %
+    \cite{#1}%
+  \endgroup%
+}%
 \makeatother
 
 % 代码块预定义格式
@@ -247,23 +268,25 @@
 % 表格与图注专属设置
 % ==========================================
 % 表内文字说明：5号宋体。
-% (注意：由于正文是小4号，每次写表格时，建议在 \begin{table} 后使用 \tableBodyFont 命令)
 \newcommand{\tableBodyFont}{\fontTimesNewRoman\fontSimsun\sizeFive}
 
 % 表注环境：小5号宋体，写在表的下方。
-\newcommand{\tablenotes}[1]{
-    \vspace{2pt} % 距离表格底部的细微间距
-    \par\noindent % 换行顶格
-    {\fontTimesNewRoman\fontSimsun\sizeFivel #1} % 小5号宋体
-}
+% \newcommand{\tablenotes}[1]{%
+%     \par % 确保另起一行
+%     \vspace{0pt} % 段前空一行
+%     \noindent\parbox{\linewidth}{%
+%         \fontSimsun\fontTimesNewRoman\sizeFivel
+%         \hspace{1em}#1 % 起行空一格（一个汉字宽度）
+%     }\par    
+% }
 
 % 图注环境：小5号宋体，应置于图题之上。
 % (在主文档中，写在 \includegraphics 和 \caption 之间即可)
 \newcommand{\figurenotes}[1]{
-    \vspace{4pt} % 与图之间的间距
+    \vspace{-7pt} % 与图之间的间距
     \par
     {\centering \fontTimesNewRoman\fontSimsun\sizeFivel #1 \par}
-    \vspace{4pt} % 与下方图题的间距
+    \vspace{1pt} % 与下方图题的间距
 }
 
 %超链接
@@ -282,3 +305,12 @@
 %参考文献格式
 \usepackage{gbt7714}
 \setlength{\bibsep}{0ex}
+
+% 列表样式
+\RequirePackage{enumitem}
+\setlist{
+    nosep,
+    leftmargin=2em,
+    labelsep=0.5em,
+    listparindent=2em
+}

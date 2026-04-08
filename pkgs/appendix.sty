@@ -1,9 +1,22 @@
 \newcommand{\createAppendix}{
-    \titleformat{\chapter}{\fontTimesNewRomanBold\fontSimhei\sizeThree}{附录\thechapter}{1em}{}
     \cleardoublepage
     \appendix
-
-    \renewcommand{\theequation}{\thechapter\arabic{equation}} % 式(B3)
-    \renewcommand{\thefigure}{\thechapter\arabic{figure}}     % 图A1
-    \renewcommand{\thetable}{\thechapter\arabic{table}}       % 表B2
+    
+    \chapter*{附录}
+    \addcontentsline{toc}{chapter}{附录}
+    
+    \setcounter{section}{0}
+    \renewcommand{\thesection}{附录\Alph{section}}
+    
+    \titleformat{\section}{\fontTimesNewRoman\fontSimhei\sizeFourl}{\thesection}{1em}{}
+    
+    \renewcommand{\thefigure}{\Alph{section}\arabic{figure}}
+    \renewcommand{\thetable}{\Alph{section}\arabic{table}}
+    \renewcommand{\theequation}{\Alph{section}\arabic{equation}}
+    
+    \makeatletter
+    \@addtoreset{figure}{section}
+    \@addtoreset{table}{section}
+    \@addtoreset{equation}{section}
+    \makeatother
 }
