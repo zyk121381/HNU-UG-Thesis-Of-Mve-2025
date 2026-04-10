@@ -12,7 +12,7 @@
     
 \RequirePackage{amsmath}
 \RequirePackage{mathspec}
-\RequirePackage[section]{placeins}
+% \RequirePackage[section]{placeins}
 \numberwithin{equation}{chapter}
 \RequirePackage{float}
 
@@ -93,7 +93,7 @@
 % 中文摘要预定义格式
 \newenvironment{abstractCN}{
     \clearpage
-    % \phantomsection\addcontentsline{toc}{chapter}{摘~~要}
+    % \phantomsection\addcontentsline{toc}{chapter}{摘~要}
     \begin{center}
         % 论文题目（小3号黑体，数字字母TNR）
         \fontTimesNewRoman\fontSimhei\sizeThreel{
@@ -176,7 +176,7 @@
     \cleardoublepage % 强制致谢在奇数页起
     \phantomsection\addcontentsline{toc}{chapter}{致~谢}
     \begin{center}
-        \fontSimhei\sizeThree 致~谢
+        \fontSimhei\sizeThree 致~~~~~~~~谢
     \end{center}
 
 
@@ -185,7 +185,7 @@
 % 插图&表格格式
 \RequirePackage{caption}
 \RequirePackage{subcaption} % 引入子图宏包，处理 (a)、(b) 分图
-
+\renewcommand{\floatpagefraction}{0.7}
 % 保证图表按章编号 (例如：表1.1, 图1.1)
 \numberwithin{table}{chapter}
 \numberwithin{figure}{chapter}
@@ -206,7 +206,7 @@
     labelsep=space, % 图号在图名之后空一格
     justification=centering, % 居中
     position=bottom, % 图题置于图下
-    aboveskip=-2pt,
+    aboveskip=-4pt,
     belowskip=-18pt,
 }
 
@@ -218,7 +218,7 @@
     labelsep=space,
     justification=centering,
     aboveskip=4pt,
-    belowskip=-4pt,
+    belowskip=0pt,
 }
 \renewcommand{\thesubfigure}{(\alph{subfigure})}
 
@@ -231,7 +231,7 @@
     justification=centering, % 置于表上居中
     position=top,
     aboveskip=0pt,
-    belowskip=-2pt,
+    belowskip=-12pt,
 }
 
 % 参考文献以上标形式置于所引用内容最末句的右上角
@@ -283,7 +283,7 @@
 % 图注环境：小5号宋体，应置于图题之上。
 % (在主文档中，写在 \includegraphics 和 \caption 之间即可)
 \newcommand{\figurenotes}[1]{
-    \vspace{-7pt} % 与图之间的间距
+    \vspace{-10pt} % 与图之间的间距
     \par
     {\centering \fontTimesNewRoman\fontSimsun\sizeFivel #1 \par}
     \vspace{1pt} % 与下方图题的间距
