@@ -1,5 +1,11 @@
-# 湖南大学机械与运载工程学院本科毕业设计（论文）撰写规范（2025修订版，适用于2026届毕业生）
+<div align="center">
+
+# 湖南大学机械与运载工程学院本科毕业设计（论文）撰写规范
+（2025修订版，适用于2026届毕业生）
+
 ![Latex](https://img.shields.io/badge/Latex-XeLaTeX-61DAFB) ![License](https://img.shields.io/badge/license-Apache%202.0-green) ![Version](https://img.shields.io/github/v/release/zyk121381/HNU-UG-Thesis-Of-Mve-2025)
+
+</div>
 
 ## 背景说明
 
@@ -7,7 +13,7 @@
 
 ## 模板来源与改动说明
 
-本模板基于@XayahSuSuSu的[LaTeX-HNUThesisTemplate](https://github.com/XayahSuSuSu/Latex-HNUThesisTemplate) 进行二次修改，针对**机械与运载工程学院**的专业要求，进行了优化与完善，修正了原模板中与学院规范不符的细节问题。
+本模板基于@XayahSuSuSu的[LaTeX-HNUThesisTemplate](https://github.com/XayahSuSuSu/Latex-HNUThesisTemplate)进行二次修改，针对**机械与运载工程学院**的专业要求，进行了优化与完善，修正了原模板中与学院规范不符的细节问题。
 
 ## 已知问题：规范与样张存在冲突
 
@@ -15,10 +21,15 @@
 
 - 目录格式与字体要求；
 - 章标题编号样式；
+- 正文末尾的页面排版规则；
 - 各类排版样式要求；
 - ……
 
-**处理建议：**  2026年4月8日接机械院教务处老师通知，按照学院提供的样张模板来。
+### 处理建议
+1. 2026年4月8日接机械院教务处老师通知，按照学院提供的**样张模板**来。—— **这个是问编号样式和目录样式的时候老师的回答**。
+2. 2026年4月21日接机械院教务处老师通知，还是要看一下规范的。—— **这个是问致谢和附录是否需要奇数页起的时候老师的回答**。
+
+> 我也不知道到底该怎么办了，之前说样张和规范冲突的，按照样张来，现在又说还要看学院规范的要求……我不行了……
 
 ## 当前模板状态
 

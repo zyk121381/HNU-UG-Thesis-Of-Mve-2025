@@ -1,4 +1,4 @@
-\LoadClass[UTF8, openright, a4paper, twoside, zihao=-4]{ctexbook}
+\LoadClass[UTF8, openany, a4paper, twoside, zihao=-4]{ctexbook}
 \newlength{\titlebaseLine}
 \setlength{\titlebaseLine}{15pt}
 \raggedbottom
@@ -85,7 +85,7 @@
 \renewcommand\mainmatter{
     \cleardoublepage  % 保证正文从奇数页（正面）开始
     \@mainmattertrue
-    \@openrighttrue   % 恢复章节奇数页起
+    \@openrightfalse   % 正文章节不再强制奇数页起
     \@twosidetrue     % 恢复双面印刷的边距交替（内装订30，外侧20）
     \pagenumbering{arabic}
 }
