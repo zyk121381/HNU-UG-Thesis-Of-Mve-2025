@@ -1,3 +1,7 @@
+\newif\ifelectronic\electronicfalse
+\DeclareOption{electronic}{\electronictrue}
+\ProcessOptions\relax
+
 \LoadClass[UTF8, openany, a4paper, twoside, zihao=-4]{ctexbook}
 \newlength{\titlebaseLine}
 \setlength{\titlebaseLine}{15pt}
@@ -16,15 +20,25 @@
 \numberwithin{equation}{chapter}
 \RequirePackage{float}
 
-% 上边距：30mm；下边距：25mm；左边距：30mm；右边距：20mm
+% 边距控制
 \RequirePackage{geometry}
-\RequirePackage{emptypage} % 确保由于右页起产生的空白背页完全空白（无页眉页码）
-\geometry{
-    top=30mm,
-    bottom=25mm,
-    inner=30mm,
-    outer=20mm,
-}
+\RequirePackage{emptypage} 
+\ifelectronic
+    \geometry{
+        top=30mm,
+        bottom=25mm,
+        left=30mm,
+        right=20mm,
+        asymmetric
+    }
+\else
+    \geometry{
+        top=30mm,
+        bottom=25mm,
+        inner=30mm,
+        outer=20mm,
+    }
+\fi
 
 % 行间距为1.5倍行距(1.5 * 1.2(latex默认) ÷ 1.3(word默认))
 \linespread{1.625}
